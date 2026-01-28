@@ -137,7 +137,7 @@ M=1
 La RAM es la memoria que usa el computador mientras estás trabajando, como cuando abres programas o juegos. Es rápida pero se borra cuando apagas todo. En cambio, la ROM tiene info que el computador necesita para encender, como las instrucciones básicas, y esa no se borra. La RAM se puede escribir y cambiar todo el tiempo, pero la ROM casi no se toca.
 
 ### Actividad 04
->Escribe un programa que compare el valor almacenado en la dirección de memoria 5 con el valor 10. Si el valor es menor que 10, guarda el valor 1 en la dirección 7. Si el valor es mayor o igual a 10, guarda el valor 0 en la dirección 7.
+>Escribe un programa que compare el valor almacenado en la dirección de memoria 5 con el valor 10. Si el valor es menor que 10, guarda el valor 1 en la dirección 7. Si el valor es mayor o igual a 10, guarda el valor 0 en la dirección 7. Simula paso a paso.
 
 ``` asm
 @5
@@ -245,6 +245,7 @@ M=D
 - El valor 15 queda guardado en la dirección de `memoria 12`.
 - El registro `D` cambia constantemente para cargar valores temporales.
 - `i` se va incrementando de uno en uno.
+
 
 
 
