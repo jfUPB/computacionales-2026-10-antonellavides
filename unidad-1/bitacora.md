@@ -161,13 +161,20 @@ M=1
 0;JMP
 ```
 #### *Paso a paso*
-1. Cargar valor de M[5] en D
-2. Restar 10 a D → D = M[5] - 10
-3. Si D < 0 → saltar a (MENOR)
-4. Si D ≥ 0 → guardar 0 en M[7]
-5. Ir a bucle infinito (LOOP)
-6. (MENOR) → guardar 1 en M[7]
-7. Ir a bucle infinito (LOOP)
+
+**1.** Cargar valor de `M[5]` en `D`
+
+**2.** Restar 10 a `D` → `D = M[5] - 10`
+
+**3.** Si `D < 0` → saltar a `(MENOR)`
+
+**4.** Si `D ≥ 0` → guardar 0 en `M[7]`
+
+**5.** Ir a bucle infinito `(LOOP)`
+
+**6.** `(MENOR)` → guardar 1 en `M[7]`
+
+**7.** Ir a bucle infinito `(LOOP)`
 
 ### Actividad 04
 > Crea un programa que use un ciclo para sumar los números del 1 al 5 y guarde el resultado en la dirección de memoria 12. Simula paso a paso.
@@ -216,15 +223,20 @@ M=D
 
 #### *Paso a paso*
 
-1. Inicializar contador: i = 1
-2. Inicializar acumulador: sum = 0
-3. Ciclo (LOOP):
-- Sumar i a sum → sum = sum + i
-- Incrementar i → i = i + 1
-- Si i == 6, salir del ciclo
+**1.** Inicializar contador: `i = 1`
+
+**2.** Inicializar acumulador: `sum = 0`
+
+**3.** Ciclo `(LOOP)`:
+
+- Sumar `i` a `sum` → `sum = sum + i`
+- Incrementar `i` → `i = i + 1`
+- Si `i == 6`, salir del ciclo
 - Si no, repetir ciclo
-4. Guardar resultado final en `M[12]` → `M[12] = sum`
-5. Bucle infinito para detener el programa
+  
+**4.** Guardar resultado final en `M[12]` → `M[12] = sum`
+
+**5.** Bucle infinito para detener el programa
   
 #### *Extra*
 - Veo que la variable `i` empieza en 1 y `sum` en 0.
@@ -233,6 +245,7 @@ M=D
 - El valor 15 queda guardado en la dirección de `memoria 12`.
 - El registro `D` cambia constantemente para cargar valores temporales.
 - `i` se va incrementando de uno en uno.
+
 
 
 
