@@ -285,6 +285,10 @@ M=D
 
 ```
 
+#### *Screen referencia*
+
+<img width="1000" height="500" alt="Diseño sin título (1)" src="https://github.com/user-attachments/assets/a8be1553-bcdb-4c6c-aab1-b0201c9ca1df" />
+
 #### *Paso a paso*
 
 **1.** Inicializar contador: `i = 1`
@@ -309,6 +313,7 @@ M=D
 - El valor 15 queda guardado en la dirección de `memoria 12`.
 - El registro `D` cambia constantemente para cargar valores temporales.
 - `i` se va incrementando de uno en uno.
+
 
 
 
