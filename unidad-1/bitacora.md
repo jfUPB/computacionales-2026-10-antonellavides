@@ -312,10 +312,119 @@ M=D
 - El registro `D` cambia constantemente para cargar valores temporales.
 - `i` se va incrementando de uno en uno.
 
+### Sustentación
+
+```asm
+// Inicializar suma = 0
+@12
+M=0
+
+// Inicializar contador para que inicie en 25
+@25
+D=A
+@i
+M=D
+
+(LOOP)
+// Si i > 36, saltar al final
+@i
+D=M
+@36
+D=D-A
+@END
+D;JEQ
+
+// suma = suma + i
+@i
+D=M
+@12
+M=D+M
+
+// i = i + 1
+@i
+M=M+1
+
+// Volver al inicio del ciclo
+@LOOP
+0;JMP
+
+// Fin del programa
+
+(END)
+@END
+0;JMP
+```
+
 ## Bitácora de reflexión
 
+>Responde con tus propias palabras a las siguientes preguntas.
+
+***Describe con tus palabras las tres fases del ciclo Fetch-Decode-Execute. ¿Qué rol juega el `Program Counter (PC)` en este ciclo?***
+
+**Fetch ->** La CPU busca la instrucción almacenada en la memoria ROM utilizando la dirección indicada por el Program Counter (PC).
+
+**Decode ->** La instrucción es interpretada para identificar su tipo y las operaciones que se deben realizar.
+
+**Execute ->** La CPU lleva a cabo la acción indicada, ya sea una operación aritmética o lógica, el almacenamiento de un valor en un registro o memoria, o un cambio en el flujo del programa mediante un salto.
+
+El Program Counter (PC) cumple un rol fundamental, ya que mantiene la dirección de la siguiente instrucción a ejecutar. Normalmente se incrementa de forma secuencial, pero puede cambiar cuando se ejecuta una instrucción de salto.
+
+***¿Cuál es la diferencia fundamental entre una instrucción-`A` (que empieza con @) y una instrucción-`C` (que involucra `D`, `M`, `A`, etc.) en el lenguaje ensamblador de Hack? Da un ejemplo de cada una.***
+
+La instrucción-`A` comienza con el símbolo `@` y la utilizo para cargar un valor constante o una dirección de memoria en el registro `A`.
+
+**Ejemplo:** `@10`
+
+La instrucción-`C` me permite realizar cálculos, mover datos entre registros o ejecutar saltos condicionales, haciendo uso de la ALU y de los registros `A`, `D` y `M`.
+
+**Ejemplo:** `D=D+1`
 
 
+***Explica la función de los siguientes componentes del computador Hack: el registro `D`, el registro `A` y la ALU.***
+
+`D` -> es un registro de propósito general que utilizo para almacenar datos temporales y resultados de operaciones.
+
+`A` -> puede contener tanto un valor numérico como una dirección de memoria. Cuando trabajo con `M`, estoy accediendo a la posición de memoria señalada por el registro `A`.
+
+`ALU` -> es el componente encargado de ejecutar las operaciones aritméticas y lógicas, como sumas, restas y comparaciones, además de generar las condiciones necesarias para los saltos.
+
+***¿Cómo se implementa un salto condicional en Hack? Describe un ejemplo (p. ej., saltar si el valor de `D` es mayor que cero).***
+
+Los saltos condicionales se implementan evaluando el contenido de un registro, usualmente el registro `D`, y aplicando una condición de salto. Si la condición se cumple, el flujo del programa cambia a la dirección indicada.
+
+**Ejemplo:** salto si el valor de `D` es mayor que cero.
+
+```asm
+@SALTO
+D;JGT
+```
+
+***¿Cómo se implementa un loop en el computador Hack? Describe un ejemplo (p. ej., un loop que decremente un valor hasta que llegue a cero).***
+
+Los loops en Hack los implemento combinando etiquetas con saltos condicionales. De esta forma, el programa puede repetir un conjunto de instrucciones mientras se cumpla una condición específica.
+
+**Ejemplo:** loop que decrementa un valor hasta llegar a cero.
+
+```asm
+(LOOP)
+@5
+M=M-1
+D=M
+@LOOP
+D;JGT
+```
+
+***¿Cuál es la diferencia entre la instrucción `D=M` y la instrucción `M=D`?***
+
+**`D=M`** -> Copia el valor almacenado en la memoria (apuntada por el registro `A`) al registro `D`.
+
+**`M=D`** -> Copia el contenido del registro `D` a la dirección de memoria indicada por `A`.
+
+La diferencia principal entre ambas instrucciones está en la dirección en la que fluye el dato.
+
+***Describe brevemente qué se necesita para leer un valor del teclado `(KBD)` y para “pintar” un pixel en la pantalla `(SCREEN)`.***
+
+Para leer el teclado, accedo a la dirección de memoria KBD (24576), donde se almacena el código de la tecla presionada. Para escribir en la pantalla, utilizo la memoria `SCREEN`, que inicia en la dirección `16384`. Al escribir valores distintos de cero en estas posiciones de memoria, se activan los píxeles correspondientes en la pantalla.
 
 
 
