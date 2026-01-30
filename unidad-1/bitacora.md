@@ -136,7 +136,71 @@ M=1
 #### *¿Qué diferencia hay entre los datos almancenados en la memoria ROM y en la RAM?*
 La RAM es la memoria que usa el computador mientras estás trabajando, como cuando abres programas o juegos. Es rápida pero se borra cuando apagas todo. En cambio, la ROM tiene info que el computador necesita para encender, como las instrucciones básicas, y esa no se borra. La RAM se puede escribir y cambiar todo el tiempo, pero la ROM casi no se toca.
 
-### Actividad 04
+### Actividad 02
+>Responde las siguientes preguntas
+
+#### *¿Qué diferencia hay entre los datos almancenados en la memoria ROM y en la RAM?*
+
+Una instrucción que utiliza la ALU es:
+
+`D=D-A`
+
+Esta instrucción le indica a la ALU que reste el valor del registro A al valor del registro `D`.
+El resultado de la operación se guarda nuevamente en el registro `D`.
+En el programa, esta operación se usa para comparar el valor almacenado en memoria con el número 10, permitiendo saber si es mayor, menor o igual
+
+#### *¿Para que sirve el registro PC?*
+
+El registro PC (Program Counter) sirve para indicar cuál es la siguiente instrucción que debe ejecutar la CPU.
+Después de cada instrucción, el PC normalmente avanza a la siguiente posición de memoria, pero si hay una instrucción de salto (`JMP`, `JLT`, etc.), el PC cambia y apunta a otra dirección del programa.
+
+#### *¿Cuál es la diferencia entre @i y @READKEYBOARD?*
+
+- `@i`
+Es una variable simbólica. El ensamblador le asigna automáticamente una dirección de memoria en la RAM (por ejemplo, RAM[16], RAM[17], etc.) -> variable general en RAM
+
+- `@READKEYBOARD`
+Es una etiqueta o símbolo predefinido o definido por el programador, que representa una dirección específica de memoria. Normalmente se usa para acceder a dispositivos de entrada/salida, como el teclado o la pantalla -> Dirección específica con un propósito concreto
+
+#### *Describe qué se necesita para leer el teclado y mostrar información en la pantalla.*
+
+Para leer el teclado y mostrar información en pantalla se necesita:
+
+- Acceder a la dirección de memoria del teclado `(KBD)`, que contiene el código de la tecla presionada.
+
+- Usar instrucciones de carga como `D=M` para leer ese valor.
+
+- Acceder a la memoria de pantalla `(SCREEN)` y escribir valores en sus posiciones.
+
+- Un bucle que revise constantemente el teclado para detectar cambios.
+
+Esto permite que el programa lea entradas del usuario y muestre resultados visuales.
+
+#### *Identifica un bucle en el programa y explica su funcionamiento.*
+
+***Ejemplo de bucle:***
+
+```asm
+(LOOP)
+@LOOP
+0;JMP
+```
+
+Este es un bucle infinito.
+La instrucción `0;JMP` hace que el programa salte siempre a la etiqueta `(LOOP)`, evitando que el programa termine.
+Se usa para mantener el programa en ejecución constante.
+
+#### *Identifica una condición en el programa y explica su funcionamiento.*
+
+***Ejemplo de condición:***
+
+`D;JLT`
+
+Esta instrucción evalúa el valor del registro `D`.
+Si `D` es menor que 0, el programa salta a la etiqueta indicada.
+En el programa, esta condición permite decidir si el valor leído de memoria es menor que 10, controlando qué valor se guarda en la memoria de salida.
+
+### Actividad 03
 >Escribe un programa que compare el valor almacenado en la dirección de memoria 5 con el valor 10. Si el valor es menor que 10, guarda el valor 1 en la dirección 7. Si el valor es mayor o igual a 10, guarda el valor 0 en la dirección 7. Simula paso a paso.
 
 ``` asm
@@ -245,6 +309,7 @@ M=D
 - El valor 15 queda guardado en la dirección de `memoria 12`.
 - El registro `D` cambia constantemente para cargar valores temporales.
 - `i` se va incrementando de uno en uno.
+
 
 
 
