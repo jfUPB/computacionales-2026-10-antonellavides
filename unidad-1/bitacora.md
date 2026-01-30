@@ -108,30 +108,19 @@ Execute: El PC (contador de programa) se pone en 7, creando un bucle infinito.
 Escribí un mini programa en ensamblador para que sumara 5 y 10. Cuando lo ejecuté, al final se guardó el 15 en la dirección de memoria 20, así que salió bien. El simulador muestra cómo va paso por paso: primero carga el 5, luego el 10, los suma, y luego guarda el resultado en la memoria. Mientras se ejecuta, los registros también van cambiando. En resumen, el programa hizo lo que tenía que hacer y no se enredó.
 
 ```js
-(LOOP) // O (START)
-
 @5
-D=M 77CARGANDO EN D LO DE LA POSICION 5
+D=A      // D = 5
+
 @10
-D=D-A //LEER DIRECCION DE MEMORIA 5 Y RESTARLO A D10 ARA SABER SI ES MAYOR O MENOR Q 10 
+D=D+A    // D = 5 + 10 = 15
 
-@MENOR
-D;JLT //INSTRUCCION DE SALTO GENERA UN VALOR EN EL REGRSTRO D, SALTA A MENOR
-
-
-(MAYOREQ) // SIGO DERECHO
-@7
-M=0
-@LOOP
-0;JMP
-
-
-(MENOR)
-@7
-M=1
-@LOOP
-0;JMP
+@20
+M=D      // RAM[20] = 15
 ```
+
+#### *Screen referencia*
+
+<img width="1000" height="500" alt="Diseño sin título (4)" src="https://github.com/user-attachments/assets/46ecc4b7-1599-4ad6-bd78-c0fea668a7df" />
 
 #### *¿Qué diferencia hay entre los datos almancenados en la memoria ROM y en la RAM?*
 La RAM es la memoria que usa el computador mientras estás trabajando, como cuando abres programas o juegos. Es rápida pero se borra cuando apagas todo. En cambio, la ROM tiene info que el computador necesita para encender, como las instrucciones básicas, y esa no se borra. La RAM se puede escribir y cambiar todo el tiempo, pero la ROM casi no se toca.
@@ -224,6 +213,13 @@ M=1
 @LOOP
 0;JMP
 ```
+
+#### *Screen referencia*
+
+<img width="1000" height="500" alt="Diseño sin título (2)" src="https://github.com/user-attachments/assets/f154211c-3013-4386-9144-8ffd204c1c56" />
+
+<img width="1000" height="500" alt="Diseño sin título (3)" src="https://github.com/user-attachments/assets/7595e2fd-3864-40c7-a780-ec94790acc61" />
+
 #### *Paso a paso*
 
 **1.** Cargar valor de `M[5]` en `D`
@@ -239,6 +235,8 @@ M=1
 **6.** `(MENOR)` → guardar 1 en `M[7]`
 
 **7.** Ir a bucle infinito `(LOOP)`
+
+## Bitácora de aplicación 
 
 ### Actividad 04
 > Crea un programa que use un ciclo para sumar los números del 1 al 5 y guarde el resultado en la dirección de memoria 12. Simula paso a paso.
@@ -314,7 +312,7 @@ M=D
 - El registro `D` cambia constantemente para cargar valores temporales.
 - `i` se va incrementando de uno en uno.
 
-
+## Bitácora de reflexión
 
 
 
