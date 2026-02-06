@@ -116,21 +116,80 @@ M=D
 ### Actividad 05
 ***Punteros***
 > Convierte estos programas a ensamblador y realiza la simulación paso a paso. Recuerda la metodología: predice, ejecuta, observa y reflexiona.
-```asm
+
+`C++`
+
+```c++
 int a = 10;
 int* p;
 p = &a;
 *p = 20;
 ```
 
-```asm
+`ENSAMBLADOR`
+
+```c++
+//int a = 10;
+@10
+D=A
+@a
+M=D
+
+//int* p;
+// p = &a;
+@a
+D=A
+@p
+M=D
+
+//*p = 20;
+@20
+D=A
+// TENER EN A EL VALOR ALMACENADO EN P, PQ P APUNTA A A
+@p
+A=M
+M=D
+```
+
+`C++`
+
+```c++
 int a = 10;
 int b = 5;
 int *p;
 p = &a;
 b = *p;
 ```
-**Solucion**
+
+`ENSAMBLADOR`
+
+```c++
+//int a = 10;
+@10
+D=A
+@a
+M=D
+
+//int b = 5;
+@5
+D=A
+@b
+M=D
+
+//int* p;
+// p = &a;
+@a
+D=A
+@p
+M=D
+
+//b = *p;
+@p  // a = contenido de p pero p tiene la direccion de A
+A=M // A=16
+D=M // D= contenido de la direccion 16 
+@b  // A = la direccion de b --> 17
+M=D // Guardando en la 17 que es b el 10 que tengo en D
+```
 
 ### Actividad 06
 ***Experimenta con arreglos***
@@ -149,4 +208,5 @@ b = *p;
 
 
 ## Bitácora de reflexión
+
 
