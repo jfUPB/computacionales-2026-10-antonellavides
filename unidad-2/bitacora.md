@@ -199,14 +199,155 @@ M=D // Guardando en la 17 que es b el 10 que tengo en D
 > - Construye tu programa PASO A PASO mediante pruebas. Indica qué característica vas a implementar con cada prueba y cómo la probaste.
 > - Muestra el programa final y cómo lo probaste.
 
-### Actividad 07
-***Experimenta con funciones***
-> Considera el siguiente programa en C++ que utiliza funciones:
+***Importante***
+
+- **El arreglo** = cajones seguidos
+
+- **El puntero** = número que dice qué cajón mirar
+
+- **El ciclo** = repetir con saltos
+ 
+- **El contador** = para saber cuándo parar
+
+***Cajón / Qué guarda***
+
+`26` -> sum (la suma total)
+
+`27` -> puntero (dice en qué cajón del arreglo estamos)
+
+`28` -> contador (cuántos números llevamos sumados)
+
+`29` -> 10 (para saber cuándo parar)
+
+
+***Codigo***
+```asm
+// ===============================
+// Inicialización del arreglo
+// arr empieza en la dirección 16
+// ===============================
+
+@1
+D=A
+@16
+M=D
+
+@20
+D=A
+@17
+M=D
+
+@13
+D=A
+@18
+M=D
+
+@24
+D=A
+@19
+M=D
+
+@55
+D=A
+@20
+M=D
+
+@96
+D=A
+@21
+M=D
+
+@87
+D=A
+@22
+M=D
+
+@83
+D=A
+@23
+M=D
+
+@98
+D=A
+@24
+M=D
+
+@102
+D=A
+@25
+M=D
+
+// ===============================
+// Inicialización de variables
+// ===============================
+
+@0
+D=A
+@26      // sum
+M=D
+
+@16
+D=A
+@27      // puntero
+M=D
+
+@0
+D=A
+@28      // contador
+M=D
+
+@10
+D=A
+@29      // limite
+M=D
+
+// ===============================
+// Bucle principal
+// ===============================
+
+(LOOP)
+    @28
+    D=M
+    @29
+    D=D-M
+    @END
+    D;JEQ      // si contador == 10 termina
+
+    // sum = sum + *puntero
+    @27
+    A=M
+    D=M
+    @26
+    M=D+M
+
+    // puntero++
+    @27
+    M=M+1
+
+    // contador++
+    @28
+    M=M+1
+
+    @LOOP
+    0;JMP
+
+// ===============================
+// Fin del programa
+// ===============================
+
+(END)
+    @END
+    0;JMP
+```
+
+<img width="500" height="500" alt="Screenshot 2026-02-09 191231" src="https://github.com/user-attachments/assets/3040946c-0177-44a3-9bf2-d5fb4772cb14" />
+
 
 ## Bitácora de aplicación 
 
 
 
 ## Bitácora de reflexión
+
 
 
