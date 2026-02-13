@@ -345,9 +345,244 @@ M=D
 
 ## Bitácora de aplicación 
 
+### Actividad 08
 
+> Resolver dos problemas de traducción de C++ a ensamblador.
+
+***Problema 1***
+
+```asm
+// ---------------- MAIN ----------------
+
+// a = 10  (RAM[16])
+@10
+D=A
+@16
+M=D
+
+// b = 20 (RAM[17])
+@20
+D=A
+@17
+M=D
+
+// pasar argumentos
+@16
+D=A
+@R0
+M=D     // R0 = &a
+
+@17
+D=A
+@R1
+M=D     // R1 = &b
+
+// llamar swap
+@RETURN_SWAP
+D=A
+@R15
+M=D
+@SWAP
+0;JMP
+
+(RETURN_SWAP)
+
+// fin del programa
+(END)
+@END
+0;JMP
+
+
+// ---------------- FUNCION SWAP ----------------
+(SWAP)
+
+// tmp = *pa
+@R0
+A=M
+D=M
+@R13
+M=D
+
+// *pa = *pb
+@R1
+A=M
+D=M
+@R0
+A=M
+M=D
+
+// *pb = tmp
+@R13
+D=M
+@R1
+A=M
+M=D
+
+// return
+@R15
+A=M
+0;JMP
+
+```
+***Inicialización de variables***
+
+<img width="500" height="500" alt="Screenshot 2026-02-12 222343" src="https://github.com/user-attachments/assets/b034edba-b0eb-4734-81a3-dc83c9a5ba7c" />
+
+- En esta captura se observa la inicialización de las variables a y b en memoria. La dirección 16 contiene el valor 10 y la dirección 17 contiene el valor 20, lo que confirma que los datos fueron almacenados correctamente antes de llamar a la función swap.
+
+***Ejecución de la función swap***
+
+<img width="500" height="500" alt="Screenshot 2026-02-12 222355" src="https://github.com/user-attachments/assets/98f0fe3e-f30b-4b64-b529-bc6ce8ac6c5e" />
+
+- En esta imagen se muestra el resultado después de ejecutar la función swap. Los valores fueron intercambiados correctamente utilizando punteros, demostrando la manipulación directa de direcciones de memoria en lenguaje ensamblador.
+
+***Problema 2***
+
+```asm
+// ------------ MAIN ------------
+
+// arr = {10,15,2,3,50}
+@10
+D=A
+@16
+M=D
+
+@15
+D=A
+@17
+M=D
+
+@2
+D=A
+@18
+M=D
+
+@3
+D=A
+@19
+M=D
+
+@50
+D=A
+@20
+M=D
+
+// argumentos
+@16
+D=A
+@R0
+M=D     // puntero arr
+
+@5
+D=A
+@R1
+M=D     // tamaño
+
+// llamar calSum
+@RETURN_SUM
+D=A
+@R15
+M=D
+@CALSUM
+0;JMP
+
+(RETURN_SUM)
+
+// resultado queda en R0
+
+(END)
+@END
+0;JMP
+
+
+// ------------ FUNCION CALSUM ------------
+(CALSUM)
+
+// sum = 0
+@0
+D=A
+@R2
+M=D
+
+// i = 0
+@0
+D=A
+@R3
+M=D
+
+
+(LOOP)
+
+// if i >= arrSize -> END
+@R3
+D=M
+@R1
+D=D-M
+@FIN
+D;JGE
+
+
+// dirección = parr + i
+@R0
+D=M
+@R3
+D=D+M
+@R13
+M=D
+
+// sum += *(parr+i)
+@R13
+A=M
+D=M
+@R2
+M=M+D
+
+// i++
+@R3
+M=M+1
+
+@LOOP
+0;JMP
+
+
+(FIN)
+
+// return sum
+@R2
+D=M
+@R0
+M=D
+
+@R15
+A=M
+0;JMP
+```
+
+******
+
+<img width="500" height="500" alt="Screenshot 2026-02-12 222930" src="https://github.com/user-attachments/assets/81b680df-36a1-4956-a57f-b257aff2d713" />
+
+- Aquí se observa el inicio de la función calSum. El registro R2 se inicializa en 0 para almacenar la suma y el registro R3 actúa como contador del ciclo que recorrerá el arreglo.
+
+******
+
+<img width="500" height="500" alt="Screenshot 2026-02-12 222946" src="https://github.com/user-attachments/assets/803aebd0-cb48-4c02-9c70-a3e14ab4bfa5" />
+
+- La captura muestra el resultado final de la ejecución. El registro R0 contiene el valor 80, que corresponde a la suma de todos los elementos del arreglo, confirmando que la función fue implementada correctamente.
 
 ## Bitácora de reflexión
+
+### Actividad 09
+
+> Implementar un programa en lenguaje ensamblador que dibuje un mapa de bits en la pantalla del computador Hack.
+
+
+
+
+
+
+
+
 
 
 
