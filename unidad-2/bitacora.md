@@ -558,13 +558,13 @@ A=M
 0;JMP
 ```
 
-******
+***Captura 1***
 
 <img width="500" height="500" alt="Screenshot 2026-02-12 222930" src="https://github.com/user-attachments/assets/81b680df-36a1-4956-a57f-b257aff2d713" />
 
 - Aquí se observa el inicio de la función calSum. El registro R2 se inicializa en 0 para almacenar la suma y el registro R3 actúa como contador del ciclo que recorrerá el arreglo.
 
-******
+***Captura 2***
 
 <img width="500" height="500" alt="Screenshot 2026-02-12 222946" src="https://github.com/user-attachments/assets/803aebd0-cb48-4c02-9c70-a3e14ab4bfa5" />
 
@@ -575,6 +575,7 @@ A=M
 ### Actividad 09
 
 > Implementar un programa en lenguaje ensamblador que dibuje un mapa de bits en la pantalla del computador Hack.
+
 
 
 
