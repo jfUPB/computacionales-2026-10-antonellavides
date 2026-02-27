@@ -1,3 +1,5 @@
+Nota del profesor: si evidencia del trabajo en la fase de aplicación
+
 # Unidad 3
 
 ## Bitácora de proceso de aprendizaje
@@ -24,3 +26,4 @@
 
 
 ## Bitácora de reflexión
+
